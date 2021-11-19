@@ -7,8 +7,16 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const User  = require('../models/User');
 const constants = require('../constants');
+const dotenv = require("dotenv");
+dotenv.config();
+const { JWT_SECRETKEY } = process.env;
+
+
+//Require db connection
+require('../dbconfig')();
 
 mongoose.model('User');
+
 
 // Register Users API
 router.post("/signup", async (req, res) => {
@@ -18,7 +26,7 @@ router.post("/signup", async (req, res) => {
     await user.save();
 
     const payload = { userId: user._id };
-    const token = jwt.sign(payload, constants.JWT_SECRETKEY);
+    const token = jwt.sign(payload, JWT_SECRETKEY);
     res.status(200).send({ token });
 
   } catch (err) {
@@ -43,7 +51,7 @@ router.post('/login', async (req, res) => {
     try{
         await user.comparePassword(password);
         const payload = { userId: user._id };
-        const token = jwt.sign(payload,constants.JWT_SECRETKEY);
+        const token = jwt.sign(payload,JWT_SECRETKEY);
         res.status(200).send({ token });
         
     }catch(err){

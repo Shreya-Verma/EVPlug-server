@@ -4,6 +4,10 @@
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const dotenv = require("dotenv");
+
+dotenv.config();
+const { JWT_SECRETKEY } = process.env;
 
 //Verify token for every request
 module.exports = (req, res, next) => {
@@ -13,7 +17,7 @@ module.exports = (req, res, next) => {
   }
   const token = authorization.replace("Bearer ", "");
   
-  jwt.verify(token, "MY_SECRETKEY", async (err, payload) => {
+  jwt.verify(token, JWT_SECRETKEY, async (err, payload) => {
     if (err) {
       return res.status(401).send({ error: "Unautorized Request" });
     }
