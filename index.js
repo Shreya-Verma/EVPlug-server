@@ -5,14 +5,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const constants = require('./constants');
+const constants = require('./src/constants');
 const app = express();
 
 //const authRoutes = require('./routes/authRoutes');
 //const requireAuth = require('./middleware/requireAuth');
 
 //DB
-require('./dbconfig')();
+require('./src/dbconfig')();
 
 app.use(cors());
 //Return the response in the body as a json object
