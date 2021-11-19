@@ -12,7 +12,7 @@ const app = express();
 //const requireAuth = require('./middleware/requireAuth');
 
 //DB
-require('../dbconfig')();
+require('./dbconfig')();
 
 app.use(cors());
 //Return the response in the body as a json object
