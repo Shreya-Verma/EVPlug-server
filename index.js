@@ -7,6 +7,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const constants = require('./src/constants');
 const app = express();
+const port = process.env.PORT || 8080; 	
 
 //const authRoutes = require('./routes/authRoutes');
 //const requireAuth = require('./middleware/requireAuth');
@@ -24,5 +25,5 @@ app.get('/',(req, resp)=>{
 })
 //Make server available on port 3000
 app.listen(constants.PORT, function(){
-    console.log('Server running on localhost ' + constants.PORT);
+    console.log('Server running on localhost ' + port);
 })
