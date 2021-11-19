@@ -5,7 +5,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const constants = require('./src/constants');
 const app = express();
 const port = process.env.PORT || 3000; 	
 
@@ -24,6 +23,6 @@ app.get('/',(req, resp)=>{
     resp.send("Hello from server")
 })
 
-app.listen(constants.PORT, function(){
+app.listen(port, function(){
     console.log('Server running on localhost ' + port);
 })
