@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/0e7bbb7a-860f-46b8-a956-c0315f7e0b8c/resourceGroups/MajorProject/providers/Microsoft.Web/sites/evplug-server",
+    "appService.deploySubpath": "."
+}

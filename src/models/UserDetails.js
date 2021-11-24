@@ -3,13 +3,6 @@
  */
 const mongoose = require('mongoose');
 
-const favouritesSchema = new mongoose.Schema({
-    coords: {
-        latitude: Number,
-        longitude: Number
-    }
-});
-
 const userDetailsSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -23,7 +16,10 @@ const userDetailsSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    favourites: [favouritesSchema]
+    phoneNumber:{
+        type: Number,
+        default: 0
+    }
 });
 
-mogoose.model('UserDetails', userDetailsSchema)
+mongoose.model('UserDetail', userDetailsSchema)
