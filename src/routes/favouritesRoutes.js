@@ -33,9 +33,10 @@ router.post('/addFav', async (req, res) => {
 router.post('/remove', async (req, res) => {
     const { ocmid } = req.body;
     try {
-     const opts = { new: true, upsert: true };
+      const opts = { new: true};
      const fav =  await Favourite.findOneAndUpdate({userId: req.user._id},{$pull:{fav: ocmid}}, opts);
-      res.send(fav);
+     console.log(fav); 
+     res.send(fav);
     } catch (err) {
       res.status(422).send({ error: err.message });
     }
