@@ -56,7 +56,7 @@ router.post("/signup", async (req, res) => {
 
     const payload = { userId: user._id };
     const token = jwt.sign(payload, JWT_SECRETKEY, { expiresIn: JWT_EXPIRATION });
-    res.status(200).send({ token });
+    res.status(200).send({ token , email});
 
   } catch (err) {
     if (JSON.stringify(err).includes(`"code":11000`)) {
@@ -96,7 +96,7 @@ router.post("/signin", async (req, res) => {
     await user.comparePassword(password);
     const payload = { userId: user._id };
     const token = jwt.sign(payload, JWT_SECRETKEY, { expiresIn: JWT_EXPIRATION });
-    res.status(200).send({ token });
+    res.status(200).send({ token , email});
   } catch (err) {
     return res.status(422).send({ error: "auth/wrong-password" });
   }

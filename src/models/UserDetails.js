@@ -10,11 +10,11 @@ const userDetailsSchema = new mongoose.Schema({
     },
     firstName: {
         type: String,
-        default: ''
+        default: null
     },
     lastName:{
         type: String,
-        default: ''
+        default: null
     },
     phoneNumber:{
         type: Number,
