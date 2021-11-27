@@ -18,6 +18,7 @@ require('./src/dbconfig')();
 app.use(cors());
 //Return the response in the body as a json object
 app.use(bodyParser.json());
+
 //Add auth routes to app
 app.use('/evplug',authRoutes);
 app.use('/evplug',userDetailsRoute);
