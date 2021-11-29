@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 3000; 	
+const port = process.env.PORT; 	
 
 const authRoutes = require('./src/routes/authRoutes');
 const userDetailsRoute = require('./src/routes/userDetailsRoute');
@@ -25,5 +25,5 @@ app.use('/evplug',userDetailsRoute);
 app.use('/evplug',favouritesRoutes);
 
 app.listen(port, function(){
-    console.log('Server running on localhost ' + port);
+    console.log('Server on port ' + port);
 })

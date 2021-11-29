@@ -86,13 +86,13 @@ router.post("/signin", async (req, res) => {
     return res.status(422).send({ error: "auth/invalid-email" });
   }
 
-  const user = await User.findOne({ email });
-
-  if (!user) {
-    return res.status(422).send({ error: "auth/user-not-found" });
-  }
-
   try {
+    
+    const user = await User.findOne({ email });
+    if (!user) {
+       return res.status(422).send({ error: "auth/user-not-found" });
+    }
+    
     await user.comparePassword(password);
     const payload = { userId: user._id };
     const token = jwt.sign(payload, JWT_SECRETKEY, { expiresIn: JWT_EXPIRATION });
